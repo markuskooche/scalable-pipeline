@@ -1,0 +1,7 @@
+POST {{ host }}/predict
+Content-Type: application/json
+Accept: application/json
+
+{
+    "foo": "bar"
+}
