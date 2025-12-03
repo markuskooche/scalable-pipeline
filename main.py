@@ -12,9 +12,11 @@ with open('model/model.pkl', 'rb') as model_file:
 
 app = FastAPI()
 
+
 @app.get('/')
 async def greeting():
-    return { 'message': 'Hello, FastAPI!' }
+    return {'message': 'Hello, FastAPI!'}
+
 
 @app.post('/predict')
 async def predict(payload: PredictPayload):
@@ -22,7 +24,7 @@ async def predict(payload: PredictPayload):
     df.rename(lambda key: key.replace('_', '-'), axis='columns', inplace=True)
 
     cat_features = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
-    x, _, _, _ = process_data(df, cat_features, None, False, config['encoder'], config ['lb'])
+    x, _, _, _ = process_data(df, cat_features, None, False, config['encoder'], config['lb'])
     preds = inference(config['model'], x)
 
-    return { 'salary': '>50K' if preds[0] else '<=50K' }
+    return {'salary': '>50K' if preds[0] else '<=50K'}

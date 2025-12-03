@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 
+
 class PredictPayload(BaseModel):
     age: int = Field(examples=[18])
     workclass: str = Field(examples=['Private'])

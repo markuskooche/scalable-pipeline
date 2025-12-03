@@ -65,6 +65,7 @@ def inference(model, x):
     """
     return model.predict(x)
 
+
 def compute_sliced_model_metrics(model, data, cat_features=[], label=None, encoder=None, lb=None):
     """
     Compute model metrics on slices of the data.
