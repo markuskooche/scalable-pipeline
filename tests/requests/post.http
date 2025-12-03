@@ -2,6 +2,22 @@ POST {{ host }}/predict
 Content-Type: application/json
 Accept: application/json
 
+// Change the following attributes:
+//   1. "relationship": "Wife",
+//   2. "sex": "Women",
 {
-    "foo": "bar"
+    "age": 35,
+    "workclass": "Self-emp-not-inc",
+    "fnlgt": 300000,
+    "education": "Master",
+    "education_num": 14,
+    "marital_status": "Married-civ-spouse",
+    "occupation": "Sales",
+    "relationship": "Husband",
+    "race": "White",
+    "sex": "Men",
+    "capital_gain": 0,
+    "capital_loss": 0,
+    "hours_per_week": 40,
+    "native_country": "United-States"
 }
