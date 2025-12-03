@@ -44,5 +44,6 @@ sliced_df = compute_sliced_model_metrics(model, df, cat_features, 'salary', enco
 logging.info(f'Sliced Model Metrics:\n{sliced_df.head()}')
 
 logging.info('Saving sliced model metrics.')
+sliced_df.to_csv('slice_output.csv')
 with open('model/sliced_metrics.pkl', 'wb') as sliced_file:
     pickle.dump(sliced_df, sliced_file, protocol=pickle.HIGHEST_PROTOCOL)
