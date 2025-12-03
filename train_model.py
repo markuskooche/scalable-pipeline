@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from ml.data import process_data
-from ml.model import train_model, inference, compute_model_metrics
+from ml.model import train_model, inference, compute_model_metrics, compute_sliced_model_metrics
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
@@ -38,3 +38,11 @@ logging.info('Saving model metrics.')
 with open('model/metrics.pkl', 'wb') as metric_file:
     metrics = {'precision': precision, 'recall': recall, 'f_beta': f_beta}
     pickle.dump(metrics, metric_file, protocol=pickle.HIGHEST_PROTOCOL)
+
+logging.info('Computing sliced model metrics.')
+sliced_df = compute_sliced_model_metrics(model, df, cat_features, 'salary', encoder, lb)
+logging.info(f'Sliced Model Metrics:\n{sliced_df.head()}')
+
+logging.info('Saving sliced model metrics.')
+with open('model/sliced_metrics.pkl', 'wb') as sliced_file:
+    pickle.dump(sliced_df, sliced_file, protocol=pickle.HIGHEST_PROTOCOL)
