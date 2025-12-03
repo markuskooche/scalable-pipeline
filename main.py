@@ -5,7 +5,6 @@ from fastapi import FastAPI
 from ml.data import process_data
 from ml.model import inference
 from schema import PredictPayload
-from train_model import cat_features
 
 
 with open('model/model.pkl', 'rb') as model_file:
@@ -22,6 +21,7 @@ async def predict(payload: PredictPayload):
     df = pd.DataFrame([payload.model_dump()])
     df.rename(lambda key: key.replace('_', '-'), axis='columns', inplace=True)
 
+    cat_features = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']
     x, _, _, _ = process_data(df, cat_features, None, False, config['encoder'], config ['lb'])
     preds = inference(config['model'], x)
 

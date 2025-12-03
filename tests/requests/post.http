@@ -2,9 +2,6 @@ POST {{ host }}/predict
 Content-Type: application/json
 Accept: application/json
 
-// Change the following attributes:
-//   1. "relationship": "Wife",
-//   2. "sex": "Women",
 {
     "age": 35,
     "workclass": "Self-emp-not-inc",
